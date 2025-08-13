@@ -1,0 +1,9 @@
+# Binaries
+megaphone
+*.o
+*.out
+
+# Build files
+/build/
+/bin/
+.vscode/
