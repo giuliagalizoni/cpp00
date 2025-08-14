@@ -1,5 +1,6 @@
 # Binaries
 megaphone
+phonebook
 *.o
 *.out
 
