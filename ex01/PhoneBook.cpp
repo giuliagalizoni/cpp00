@@ -1,7 +1,7 @@
 #include <iostream>
 #include "./PhoneBook.hpp"
 
-PhoneBook::PhoneBook(/* args */)
+PhoneBook::PhoneBook(Contact contacts[8])
 {
 	std::cout << "constructor called" << std::endl;
 	return ;

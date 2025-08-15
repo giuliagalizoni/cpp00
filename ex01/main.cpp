@@ -2,7 +2,7 @@
 
 int	main()
 {
-	PhoneBook	phonebook;
+	PhoneBook	phonebook("Banana", "Naninca", "123456", "It's getting dark");
 
 	return 0;
 }

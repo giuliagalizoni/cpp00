@@ -1,12 +1,17 @@
 #ifndef PHONEBOOK_CLASS
 # define PHONEBOOK_CLASS
 
+# include <string>
+# include <array>
+# include "Contact.hpp"
+
 class PhoneBook
 {
 private:
-	/* data */
+	// smth?
 public:
-	PhoneBook(/* args */);
+
+	PhoneBook(Contact contacts[8]);
 	~PhoneBook();
 };
 
