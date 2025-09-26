@@ -1,12 +1,16 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <iostream>
 
 int	main()
 {
-	Contact	contact1(0, "Banana", "Naninca", "123456", "It's getting dark");
 	PhoneBook	phonebook;
-	phonebook.addContact(0);
-
+	phonebook.startPhonebook();
+	Contact contact = phonebook.getContact(0);
+	std::cout << "First name: " << contact.get_first_name() << std::endl;
+	std::cout << "Last name: " << contact.get_last_name() << std::endl;
+	std::cout << "Phone number: " << contact.get_phone() << std::endl;
+	std::cout << "Darkest Secret: " << contact.get_secret() << std::endl;
 
 	return 0;
 }

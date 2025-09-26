@@ -15,7 +15,10 @@ public:
 	PhoneBook();
 	~PhoneBook();
 
-	void addContact(int index);
+	void	startPhonebook();
+	void	addContact();
+	void	search();
+	Contact	getContact(int index);
 };
 
 

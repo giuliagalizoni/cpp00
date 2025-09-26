@@ -24,6 +24,9 @@ public:
 	~Contact();
 
 	std::string get_first_name(void) const;
+	std::string get_last_name(void) const;
+	std::string get_phone(void) const;
+	std::string get_secret(void) const;
 };
 
 
