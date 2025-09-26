@@ -1,6 +1,12 @@
 #include "Contact.hpp"
 #include <iostream>
 
+// Default constructor
+Contact::Contact() : _index(-1), _first_name(""), _last_name(""), _phone_number(""), _darkest_secret("")
+{
+    std::cout << "Contact default constructor was called" << std::endl;
+}
+
 Contact::Contact(
 		int p0,
 		std::string p1,
@@ -13,6 +19,7 @@ Contact::Contact(
 		_phone_number(p3),
 		_darkest_secret(p4) {
 	std::cout << "Contact constructor was called" << std::endl;
+	std::cout << "Index is " << _index << std::endl;
 }
 
 Contact::~Contact() {
@@ -21,4 +28,12 @@ Contact::~Contact() {
 
 std::string Contact::get_first_name(void) const {
 	return this->_first_name;
+}
+
+void Contact::addFirstName(void) {
+	std::string firstName;
+
+	std::cout << "Please enter the first name" << std::endl;
+	std::cin >> firstName;
+	this->_first_name = firstName;
 }

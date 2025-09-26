@@ -8,11 +8,14 @@
 class PhoneBook
 {
 private:
-	// smth?
+	Contact	contacts[8];
+	int	count;
+	Contact	collectContactData(int index);
 public:
-
-	PhoneBook(Contact contacts[8]);
+	PhoneBook();
 	~PhoneBook();
+
+	void addContact(int index);
 };
 
 
