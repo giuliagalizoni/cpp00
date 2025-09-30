@@ -99,11 +99,11 @@ void	PhoneBook::startPhonebook() {
 		std::cout << "[  EXIT  ]" << std::endl;
 		std::getline(std::cin, option);
 
-		if (option == "ADD")
+		if (option == "ADD" || option == "add")
 			addContact();
-		else if (option == "SEARCH")
+		else if (option == "SEARCH" || option == "search")
 			search();
-		else if (option == "EXIT") {
+		else if (option == "EXIT" || option == "exit") {
 			std::cout << "Goodbye!" << std::endl;
 			break;
 		}
