@@ -9,6 +9,7 @@ private:
 	int	_index;
 	std::string _first_name;
 	std::string _last_name;
+	std::string _nickname;
 	std::string _phone_number;
 	std::string _darkest_secret;
 public:
@@ -18,16 +19,18 @@ public:
 	Contact( int _index,
 		std::string first_name,
 		std::string last_name,
+		std::string nickname,
 		std::string phone_number,
 		std::string darkest_secret
 	);
 	~Contact();
 
+	int get_index(void) const;
 	std::string get_first_name(void) const;
 	std::string get_last_name(void) const;
+	std::string get_nickname(void) const;
 	std::string get_phone(void) const;
 	std::string get_secret(void) const;
 };
-
 
 #endif

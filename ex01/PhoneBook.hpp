@@ -18,6 +18,7 @@ public:
 	void	addContact();
 	void	search();
 	Contact	getContact(int index);
+	void	displayContact(Contact contact);
 };
 
 
