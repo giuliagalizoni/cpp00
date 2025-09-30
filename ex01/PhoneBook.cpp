@@ -63,6 +63,26 @@ void PhoneBook::addContact()
 	std::cout << "Contact " << contact.get_first_name() << " was created" << std::endl;
 }
 
+bool	PhoneBook::validateString(std::string field) {
+	if (field.empty() || field.find_first_not_of(" \t\n\r") == std::string::npos) {
+		std::cout << "This field cannot be empty. Please try again" << std::endl;
+		return false;
+	}
+	return true;
+}
+
+bool	PhoneBook::validateNumber(std::string field) {
+	if (field.empty() || field.find_first_not_of(" \t\n\r") == std::string::npos) {
+		std::cout << "This field cannot be empty. Please try again" << std::endl;
+		return false;
+	}
+	if (field.find_first_not_of("0123456789") != std::string::npos) {
+		std::cout << "Please enter a valid phone number" << std::endl;
+		return false;
+	}
+	return true;
+}
+
 Contact PhoneBook::collectContactData(int index) {
 	std::string first_name;
 	std::string last_name;
@@ -72,14 +92,24 @@ Contact PhoneBook::collectContactData(int index) {
 
 	std::cout << "Please enter the first name" << std::endl;
 	std::getline(std::cin, first_name);
+	while (!validateString(first_name))
+		std::getline(std::cin, first_name);
 	std::cout << "Please enter the last name" << std::endl;
 	std::getline(std::cin, last_name);
+	while (!validateString(last_name))
+		std::getline(std::cin, last_name);
 	std::cout << "Please enter the nickname" << std::endl;
 	std::getline(std::cin, nickname);
+	while (!validateString(nickname))
+		std::getline(std::cin, nickname);
 	std::cout << "Please enter the phone number" << std::endl;
 	std::getline(std::cin, phone);
+	while (!validateNumber(phone))
+		std::getline(std::cin, phone);
 	std::cout << "Please enter the darkest secret" << std::endl;
 	std::getline(std::cin, secret);
+	while (!validateString(secret))
+		std::getline(std::cin, secret);
 
 	Contact contact(index, first_name, last_name, nickname, phone, secret);
 	return contact;

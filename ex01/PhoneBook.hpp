@@ -10,6 +10,8 @@ private:
 	Contact	contacts[8];
 	int	count;
 	Contact	collectContactData(int index);
+	bool	validateString(std::string field);
+	bool	validateNumber(std::string field);
 public:
 	PhoneBook();
 	~PhoneBook();
