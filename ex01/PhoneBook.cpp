@@ -1,15 +1,17 @@
 #include <iostream>
 #include <iomanip>
 #include "./PhoneBook.hpp"
+#include <cstdlib>
+#include <algorithm>
 
 PhoneBook::PhoneBook() : count(0) {
-	// std::cout << "Phonebook constructor called" << std::endl;
+	std::cout << "PhoneBook constructor called" << std::endl;
 	std::cout << "PhoneBook initialized with " << count << " contacts" << std::endl;
 	return ;
 }
 
 PhoneBook::~PhoneBook() {
-	std::cout << "Phonebook destructor called" << std::endl;
+	std::cout << "PhoneBook destructor called" << std::endl;
 	return ;
 }
 
@@ -29,8 +31,15 @@ void	PhoneBook::search() {
 		return ;
 	}
 	std::cout << "Which contact would you like to see?" << std::endl;
+	std::cout << std::setw(10) << "Index" << "|"
+			<< std::setw(10) << "First Name" << "|"
+			<< std::setw(10) << "Last Name" << "|"
+			<< std::setw(10) << "Nickname" << std::endl;
+	std::cout << "__________|__________|__________|__________" << std::endl;
 
-	for (int i = 0; i < count; i ++)
+	int contacts_to_show = (count > 8) ? 8 : count;
+
+	for (int i = 0; i < contacts_to_show; i ++)
 	{
 		std::cout << std::setw(10) << contacts[i].get_index() << "|"
 				<< std::setw(10) << formatString(contacts[i].get_first_name()) << "|"
@@ -40,9 +49,14 @@ void	PhoneBook::search() {
 	}
 
 	std::cout << "Enter the index: " << std::endl;
-	int contact_index;
-	std::cin >> contact_index; // TODO: error handling here
-	std::cin.ignore();
+	std::string input;
+	std::getline(std::cin, input);
+	int contact_index = std::atoi(input.c_str());
+	while (contact_index < 0 || contact_index >= contacts_to_show) {
+		std::cout << "Invalid index. Please enter a number between 0 and " << (contacts_to_show - 1) << std::endl;
+		std::getline(std::cin, input);
+		contact_index = std::atoi(input.c_str());
+	}
 	displayContact(getContact(contact_index));
 }
 
@@ -58,6 +72,11 @@ void PhoneBook::addContact()
 {
 	int index = count % 8;
 	Contact contact = collectContactData(index);
+
+	if (count >= 8) {
+		std::cout << "Replacing contact at position " << index << std::endl;
+	}
+
 	this->contacts[index] = contact;
 	count++;
 	std::cout << "Contact " << contact.get_first_name() << " was created" << std::endl;
@@ -90,6 +109,7 @@ Contact PhoneBook::collectContactData(int index) {
 	std::string phone;
 	std::string secret;
 
+	std::cout << "=== ADD NEW CONTACT ===" << std::endl;
 	std::cout << "Please enter the first name" << std::endl;
 	std::getline(std::cin, first_name);
 	while (!validateString(first_name))
@@ -112,10 +132,11 @@ Contact PhoneBook::collectContactData(int index) {
 		std::getline(std::cin, secret);
 
 	Contact contact(index, first_name, last_name, nickname, phone, secret);
+	std::cout << "Contact successfully added!" << std::endl << std::endl;
 	return contact;
 }
 
-Contact PhoneBook::getContact(int index) {
+Contact PhoneBook::getContact(int index) const {
 	return this->contacts[index];
 }
 
@@ -129,11 +150,12 @@ void	PhoneBook::startPhonebook() {
 		std::cout << "[  EXIT  ]" << std::endl;
 		std::getline(std::cin, option);
 
-		if (option == "ADD" || option == "add")
+		std::transform(option.begin(), option.end(), option.begin(), ::toupper);
+		if (option == "ADD")
 			addContact();
-		else if (option == "SEARCH" || option == "search")
+		else if (option == "SEARCH")
 			search();
-		else if (option == "EXIT" || option == "exit") {
+		else if (option == "EXIT") {
 			std::cout << "Goodbye!" << std::endl;
 			break;
 		}

@@ -19,7 +19,7 @@ public:
 	void	startPhonebook();
 	void	addContact();
 	void	search();
-	Contact	getContact(int index);
+	Contact	getContact(int index) const;
 	void	displayContact(Contact contact);
 };
 
