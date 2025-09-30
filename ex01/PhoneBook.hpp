@@ -2,7 +2,6 @@
 # define PHONEBOOK_CLASS
 
 # include <string>
-# include <array>
 # include "Contact.hpp"
 
 class PhoneBook
