@@ -152,7 +152,11 @@ void	PhoneBook::startPhonebook() {
 		std::cout << "[   ADD  ]" << std::endl;
 		std::cout << "[ SEARCH ]" << std::endl;
 		std::cout << "[  EXIT  ]" << std::endl;
-		std::getline(std::cin, option);
+
+		if (!std::getline(std::cin, option)) {
+			std::cout << "\nEOF detected. Exiting phonebook." << std::endl;
+			return;
+		}
 
 		std::transform(option.begin(), option.end(), option.begin(), ::toupper);
 		if (option == "ADD")
