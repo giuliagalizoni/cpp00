@@ -51,6 +51,8 @@ void	PhoneBook::search() {
 	std::cout << "Enter the index: " << std::endl;
 	std::string input;
 	std::getline(std::cin, input);
+	while (!validateNumber(input))
+		std::getline(std::cin, input);
 	int contact_index = std::atoi(input.c_str());
 	while (contact_index < 0 || contact_index >= contacts_to_show) {
 		std::cout << "Invalid index. Please enter a number between 0 and " << (contacts_to_show - 1) << std::endl;
@@ -61,11 +63,13 @@ void	PhoneBook::search() {
 }
 
 void	PhoneBook::displayContact(Contact contact) {
+	std::cout << "=== VIEW CONTACT ===" << std::endl;
 	std::cout << "First name: " << contact.get_first_name() << std::endl
 			 << "Last name: " << contact.get_last_name() << std::endl
 			 << "Nickname: " << contact.get_nickname() << std::endl
 			 << "Phone number: " << contact.get_phone() << std::endl
 			 << "Darkest Secret: " << contact.get_secret() << std::endl;
+			 std::cout << "=================" << std::endl << std::endl;
 }
 
 void PhoneBook::addContact()
@@ -96,7 +100,7 @@ bool	PhoneBook::validateNumber(std::string field) {
 		return false;
 	}
 	if (field.find_first_not_of("0123456789") != std::string::npos) {
-		std::cout << "Please enter a valid phone number" << std::endl;
+		std::cout << "Please enter a valid number (only digits)" << std::endl;
 		return false;
 	}
 	return true;
