@@ -1,12 +1,12 @@
-#include "./Account.hpp"
+#include "Account.hpp"
 #include <iostream>
 #include <ctime>
 #include <iomanip>
 
-int Account::_nbAccounts = 0;
-int Account::_totalAmount = 0;
-int Account::_totalNbDeposits = 0;
-int Account::_totalNbWithdrawals = 0;
+int	Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
+int	Account::_totalNbDeposits = 0;
+int	Account::_totalNbWithdrawals = 0;
 
 Account::Account( int initial_deposit ) {
 	_accountIndex = _nbAccounts;
@@ -66,6 +66,7 @@ void	Account::makeDeposit( int deposit ) {
 		<< ";nb_deposits:" << _nbDeposits
 		<< std::endl;
 }
+
 bool	Account::makeWithdrawal( int withdrawal ) {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
@@ -89,6 +90,7 @@ bool	Account::makeWithdrawal( int withdrawal ) {
 int	Account::checkAmount( void ) const {
 	return _amount;
 }
+
 void	Account::displayStatus( void ) const {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex

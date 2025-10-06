@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include "./PhoneBook.hpp"
+#include "PhoneBook.hpp"
 #include <cstdlib>
 #include <algorithm>
 
@@ -24,8 +24,7 @@ std::string	formatString(std::string text) {
 void	PhoneBook::search() {
 	std::cout << "Searching..." << std::endl;
 
-	if (count == 0)
-	{
+	if (count == 0) {
 		std::cout << "You don't have any contacts yet :(" << std::endl
 				<< "how about adding some?" << std::endl << std::endl;
 		return ;
@@ -39,7 +38,7 @@ void	PhoneBook::search() {
 
 	int contacts_to_show = (count > 8) ? 8 : count;
 
-	for (int i = 0; i < contacts_to_show; i ++)
+	for (int i = 0; i < contacts_to_show; i++)
 	{
 		std::cout << std::setw(10) << contacts[i].get_index() << "|"
 				<< std::setw(10) << formatString(contacts[i].get_first_name()) << "|"
@@ -72,7 +71,7 @@ void	PhoneBook::displayContact(Contact contact) {
 			 std::cout << "=================" << std::endl << std::endl;
 }
 
-void PhoneBook::addContact()
+void	PhoneBook::addContact()
 {
 	int index = count % 8;
 	Contact contact = collectContactData(index);
@@ -106,7 +105,7 @@ bool	PhoneBook::validateNumber(std::string field) {
 	return true;
 }
 
-Contact PhoneBook::collectContactData(int index) {
+Contact	PhoneBook::collectContactData(int index) {
 	std::string first_name;
 	std::string last_name;
 	std::string nickname;
@@ -140,14 +139,14 @@ Contact PhoneBook::collectContactData(int index) {
 	return contact;
 }
 
-Contact PhoneBook::getContact(int index) const {
+Contact	PhoneBook::getContact(int index) const {
 	return this->contacts[index];
 }
 
 void	PhoneBook::startPhonebook() {
 	std::string option;
 
-	while(1) {
+	while (1) {
 		std::cout << "What do you wanna do?" << std::endl;
 		std::cout << "[   ADD  ]" << std::endl;
 		std::cout << "[ SEARCH ]" << std::endl;

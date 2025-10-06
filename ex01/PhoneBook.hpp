@@ -23,6 +23,4 @@ public:
 	void	displayContact(Contact contact);
 };
 
-
-
 #endif
