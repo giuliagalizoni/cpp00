@@ -2,9 +2,9 @@
 #include "Contact.hpp"
 #include <iostream>
 
-int	main()
+int main()
 {
-	PhoneBook	phonebook;
+	PhoneBook phonebook;
 	phonebook.startPhonebook();
 	return 0;
 }
