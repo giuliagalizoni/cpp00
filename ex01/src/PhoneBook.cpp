@@ -1,19 +1,18 @@
 #include <iostream>
 #include <iomanip>
-#include "PhoneBook.hpp"
 #include <cstdlib>
-#include <algorithm>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() : _count(0)
 {
-	std::cout << "PhoneBook constructor called" << std::endl;
-	std::cout << "PhoneBook initialized with " << _count << " contacts" << std::endl;
+	// std::cout << "PhoneBook constructor called" << std::endl;
+	// std::cout << "PhoneBook initialized with " << _count << " contacts" << std::endl;
 	return;
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "PhoneBook destructor called" << std::endl;
+	// std::cout << "PhoneBook destructor called" << std::endl;
 	return;
 }
 
@@ -85,12 +84,9 @@ void PhoneBook::_displayContact(Contact contact)
 
 void PhoneBook::addContact()
 {
-	Contact contact;
+
 	int index = _count % 8;
-
-	if (!_collectContactData(index, contact))
-		return;
-
+	Contact contact = _collectContactData(index);
 	if (_count >= 8)
 	{
 		std::cout << "Replacing contact at position " << index << std::endl;
@@ -150,7 +146,7 @@ bool PhoneBook::_fillField(std::string field, std::string field_name)
 	return true;
 }
 
-bool PhoneBook::_collectContactData(int index, Contact &contact)
+Contact PhoneBook::_collectContactData(int index)
 {
 	std::string first_name;
 	std::string last_name;
@@ -159,58 +155,22 @@ bool PhoneBook::_collectContactData(int index, Contact &contact)
 	std::string secret;
 
 	std::cout << "=== ADD NEW CONTACT ===" << std::endl;
+	_fillField(first_name, "first name");
+	_fillField(last_name, "last name");
+	_fillField(nickname, "nickname");
+	_fillField(phone, "phone number");
+	_fillField(secret, "darkest secret");
 
-	if (!_fillField(first_name, "first name") ||
-		!_fillField(last_name, "last name") ||
-		!_fillField(nickname, "nickname") ||
-		!_fillField(phone, "phone number") ||
-		!_fillField(secret, "darkest secret"))
-	{
-		return false;
-	}
-
-	contact = Contact(index, first_name, last_name, nickname, phone, secret);
+	Contact contact = Contact(index, first_name, last_name, nickname, phone, secret);
 	std::cout << "Contact successfully added!" << std::endl
 			  << std::endl;
 
-	return true;
+	return contact;
 }
 
 Contact PhoneBook::_getContact(int index) const
 {
 	return this->_contacts[index];
-}
-
-void PhoneBook::startPhonebook()
-{
-	std::string option;
-
-	while (1)
-	{
-		std::cout << "What do you wanna do?" << std::endl;
-		std::cout << "[   ADD  ]" << std::endl;
-		std::cout << "[ SEARCH ]" << std::endl;
-		std::cout << "[  EXIT  ]" << std::endl;
-
-		if (!std::getline(std::cin, option))
-		{
-			std::cout << "\nEOF detected. Exiting phonebook." << std::endl;
-			return;
-		}
-
-		std::transform(option.begin(), option.end(), option.begin(), ::toupper);
-		if (option == "ADD")
-			addContact();
-		else if (option == "SEARCH")
-			search();
-		else if (option == "EXIT")
-		{
-			std::cout << "Goodbye!" << std::endl;
-			break;
-		}
-		else
-			std::cout << "Please enter one of the options below." << std::endl;
-	}
 }
 
 std::string PhoneBook::_formatString(std::string text)

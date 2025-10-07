@@ -3,7 +3,7 @@
 
 Contact::Contact() : _index(-1), _first_name(""), _last_name(""), _nickname(""), _phone_number(""), _darkest_secret("")
 {
-	std::cout << "Contact default constructor was called" << std::endl;
+	// std::cout << "Contact default constructor was called" << std::endl;
 }
 
 Contact::Contact(
@@ -24,7 +24,7 @@ Contact::Contact(
 
 Contact::~Contact()
 {
-	std::cout << "Contact destructor was called for index " << this->_index << std::endl;
+	// std::cout << "Contact destructor was called for index " << this->_index << std::endl;
 }
 
 int Contact::get_index(void) const
