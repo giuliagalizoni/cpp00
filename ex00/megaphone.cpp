@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <algorithm> // CAN'T USE THIS
 #include <cctype>
 
 int main(int argc, char **argv)
@@ -14,8 +14,10 @@ int main(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
 	{
 		std::string s = argv[i];
-		std::transform(s.begin(), s.end(), s.begin(), (int (*)(int))std::toupper);
-		std::cout << s;
+		for (int j = 0; j < (int)s.size(); j++)
+			std::cout << (char)std::toupper(s[j]);
+		// std::transform(s.begin(), s.end(), s.begin(), (int (*)(int))std::toupper);
+		// std::cout << s;
 	}
 	std::cout << std::endl;
 
