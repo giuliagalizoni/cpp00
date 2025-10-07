@@ -7,11 +7,16 @@
 class PhoneBook
 {
 private:
-	Contact	contacts[8];
-	int	count;
-	Contact	collectContactData(int index);
-	bool	validateString(std::string field);
-	bool	validateNumber(std::string field);
+	Contact	_contacts[8];
+	int	_count;
+
+	Contact	_collectContactData(int index);
+	Contact	_getContact(int index) const;
+	bool	_validateString(std::string field);
+	bool	_validateNumber(std::string field);
+	void	_displayContactTable(int contacts_to_show);
+	void	_displayContact(Contact contact);
+	std::string	_formatString(std::string text);
 public:
 	PhoneBook();
 	~PhoneBook();
@@ -19,8 +24,8 @@ public:
 	void	startPhonebook();
 	void	addContact();
 	void	search();
-	Contact	getContact(int index) const;
-	void	displayContact(Contact contact);
+
+
 };
 
 #endif
