@@ -87,6 +87,8 @@ void PhoneBook::addContact()
 
 	int index = _count % 8;
 	Contact contact = _collectContactData(index);
+	if (contact.get_index() == -1)
+		return;
 	if (_count >= 8)
 	{
 		std::cout << "Replacing contact at position " << index << std::endl;
@@ -155,11 +157,15 @@ Contact PhoneBook::_collectContactData(int index)
 	std::string secret;
 
 	std::cout << "=== ADD NEW CONTACT ===" << std::endl;
-	_fillField(first_name, "first name");
-	_fillField(last_name, "last name");
-	_fillField(nickname, "nickname");
-	_fillField(phone, "phone number");
-	_fillField(secret, "darkest secret");
+	if (!_fillField(first_name, "first name") ||
+		!_fillField(last_name, "last name") ||
+		!_fillField(nickname, "nickname") ||
+		!_fillField(phone, "phone number") ||
+		!_fillField(secret, "darkest secret")
+	)
+	{
+		return Contact();
+	}
 
 	Contact contact = Contact(index, first_name, last_name, nickname, phone, secret);
 	std::cout << "Contact successfully added!" << std::endl
