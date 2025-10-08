@@ -122,7 +122,7 @@ bool PhoneBook::_validateNumber(std::string field)
 	return true;
 }
 
-bool PhoneBook::_fillField(std::string field, std::string field_name)
+bool PhoneBook::_fillField(std::string& field, std::string field_name)
 {
 	std::cout << "Please enter the " << field_name << " :" << std::endl;
 	if (!std::getline(std::cin, field))

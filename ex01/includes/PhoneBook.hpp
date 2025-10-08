@@ -12,7 +12,7 @@ private:
 
 	Contact	_collectContactData(int index);
 	Contact	_getContact(int index) const;
-	bool	_fillField(std::string field, std::string field_name);
+	bool	_fillField(std::string& field, std::string field_name);
 	bool	_validateString(std::string field);
 	bool	_validateNumber(std::string field);
 	void	_displayContactTable(int contacts_to_show);
