@@ -9,3 +9,5 @@ accounts
 /build/
 /bin/
 .vscode/
+
+.clang-format
