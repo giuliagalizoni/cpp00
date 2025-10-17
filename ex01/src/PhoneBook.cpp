@@ -3,15 +3,9 @@
 #include <cstdlib>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _count(0)
-{
-	return;
-}
+PhoneBook::PhoneBook() : _count(0) {}
 
-PhoneBook::~PhoneBook()
-{
-	return;
-}
+PhoneBook::~PhoneBook() {}
 
 void PhoneBook::addContact()
 {
